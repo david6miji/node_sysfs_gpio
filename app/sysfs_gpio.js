@@ -11,8 +11,10 @@ const ON   = 1;
 
 sysfsGPIO = function(index){
 	console.log( "create sysfsGPIO("+index+")" );
-	this.index = index;
-	this.path  = sysfs_base + 'gpio' + index + '/';
+	this.index 		= index;
+	this.path  		= sysfs_base + 'gpio' + index + '/';
+	this.timer_id 	= undefined;
+	this.count 		= 0;
 	
  	              this.remove_gpio()
  	.then(	() => this.append_gpio() )
@@ -87,20 +89,39 @@ sysfsGPIO.prototype.output_value_gpio = function (value) {
 };
 
 sysfsGPIO.prototype.delay = function (msec) {
-	return new Promise( function (resolve, reject) {
+	return new Promise( (resolve, reject) => {
 		setTimeout( function () {
 			resolve();
 		}, msec );
 	});
 };
 
-
-
+sysfsGPIO.prototype.start_pulse = function(time,count) {
+	return new Promise( (resolve, reject) => {
+		if ( this.timer_id !== null ){
+			clearInterval(this.timer_id);
+		}
+		this.count = count * 2;
+		this.timer_id 	= setInterval( () => {
+			console.log( "CALL Timer gpio[" + this.index + "] " + this.count );
+			this.output_value_gpio(this.count % 2);
+			this.count--;
+			if( this.count <= 0 ) {
+				clearInterval(this.timer_id);
+				this.timer_id = undefined;
+			}
+		}, time );
+		if( this.timer_id !== null ) 	resolve();
+		else							reject("fail timer interval");
+	});
+};
 
 sysfsGPIO.prototype.test = function () {
 	var self = this;
 
 	console.log( 'CALL sysfsGPIO.test()' );
+	
+	this.start_pulse(10,100);
 
 	return self;
 }
