@@ -161,6 +161,21 @@ sysfsGPIO.prototype.start_pulse = function(time,count) {
 	});
 };
 
+sysfsGPIO.prototype.stop = function () {
+	var self = this;
+
+	console.log( 'CALL sysfsGPIO.stop('+this.index+')' );
+	if ( this.timer_id !== null ){
+		clearInterval(this.timer_id);
+		this.timer_id = undefined;
+	}
+	
+	this.output_value_gpio( OFF );
+	
+	return self;
+}
+
+
 sysfsGPIO.prototype.test = function () {
 	var self = this;
 

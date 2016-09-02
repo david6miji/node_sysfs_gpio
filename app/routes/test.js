@@ -5,11 +5,11 @@ var
 	
 end_require= true;
 
-const 	FORWARD_GPIO_INDEX 	= 37;
-const 	BACKWARD_GPIO_INDEX = 36;
- 
-var gpio_forward 	= new sfg( FORWARD_GPIO_INDEX 	);
-var gpio_backward 	= new sfg( BACKWARD_GPIO_INDEX 	);
+// const 	FORWARD_GPIO_INDEX 	= 37;
+// const 	BACKWARD_GPIO_INDEX = 36;
+//  
+// var gpio_forward 	= new sfg( FORWARD_GPIO_INDEX 	);
+// var gpio_backward 	= new sfg( BACKWARD_GPIO_INDEX 	);
 
 // var gpio_clean_up	= function(){
 // 	console.log( "CALL gpio_clean_up()" );
@@ -22,8 +22,8 @@ var gpio_backward 	= new sfg( BACKWARD_GPIO_INDEX 	);
 /* GET test  */
 router.get('/', function(req, res, next) {
 	
-	gpio_forward.test();
-	gpio_backward.test();
+//	gpio_forward.test();
+//	gpio_backward.test();
 	
 	res.send('ok test');
 });
