@@ -12,8 +12,8 @@ function( $scope, $http, $interval ) {
 	$scope.backward_time  = 100;
 	$scope.backward_count = 10;
 
-	$scope.forward_rest_count  = 0;
-	$scope.backward_rest_count = 0;
+	$scope.forward_rest_count  = 10;
+	$scope.backward_rest_count = 10;
 
 	$scope.goStop = function() {
 		console.log( "Stop" );

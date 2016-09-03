@@ -76,6 +76,15 @@
                ng-model="forward_rest_count"
                id="forward_rest_count">
       </div>
+      <div class="col-sm-7">
+          <uib-progressbar class="progress-striped active"
+                        ng-model=""
+                        max="forward_count"
+                        value="forward_rest_count"
+                        type="success">
+                        <i>{{forward_rest_count}}/{{forward_count}}</i>
+          </uib-progressbar>
+      </div>
     </div>
   </form>
   <form class="form-horizontal">
@@ -88,6 +97,14 @@
                class="form-control"
                ng-model="backward_rest_count"
                id="backward_rest_count">
+      </div>
+      <div class="col-sm-7">
+          <uib-progressbar class="progress-striped active"
+                        max="backward_count"
+                        value="backward_rest_count"
+                        >
+                        <i>{{backward_rest_count}}/{{backward_count}}</i>
+          </uib-progressbar>
       </div>
     </div>
   </form>
