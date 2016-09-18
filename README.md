@@ -12,6 +12,15 @@ $ cd node_sysfs_gpio/app
 $ npm install
 ```
 
+## Run
+
+run server
+
+```bash
+$ DEBUG=app:* npm start
+```
+
+
 ## LICENSE
 
 MIT license. See the LICENSE file for details.
