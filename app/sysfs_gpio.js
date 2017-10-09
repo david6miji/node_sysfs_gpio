@@ -1,4 +1,4 @@
-var 
+var
 	inherits 			= require('util').inherits,
 	fs					= require('fs'),
 
@@ -15,7 +15,7 @@ sysfsGPIO = function(index){
 	this.timer_id 	= undefined;
 	this.count 		= 0;
 	this.out_fd		= -1;
-	
+
  	              this.remove_gpio()
  	.then(	() => this.append_gpio() )
  	.then(	() => this.output_mode_gpio() )
@@ -34,7 +34,7 @@ sysfsGPIO.prototype.remove_gpio = function () {
 					console.log(err);
 					reject(err);
 					return;
-				} 
+				}
 			}
 			console.log('remove gpio['+this.index+'] is successed!');
 			resolve();
@@ -50,7 +50,7 @@ sysfsGPIO.prototype.append_gpio = function () {
 				console.log('appending gpio['+this.index+'] is fail');
 				console.log(err);
 				reject(err);
-			} else {	
+			} else {
 				console.log('appending gpio['+this.index+'] is successed!');
 				resolve();
 			}
@@ -63,7 +63,7 @@ sysfsGPIO.prototype.output_mode_gpio = function () {
 		fs.writeFile( this.path + 'direction', 'out', (err) => {
 			if (err) {
 				console.log('changing gpio['+this.index+'] mode to output is failed');
-				console.log(err); 
+				console.log(err);
 				reject(err);
 				return;
 			}
@@ -76,7 +76,7 @@ sysfsGPIO.prototype.output_mode_gpio = function () {
 
 sysfsGPIO.prototype.disp_out = function (value) {
 	if( value === OFF ) console.log( 'OFF : ' + this.index );
-	else                console.log( 'ON  : ' + this.index ); 
+	else                console.log( 'ON  : ' + this.index );
 }
 
 sysfsGPIO.prototype.output_value_gpio = function (value) {
@@ -84,7 +84,7 @@ sysfsGPIO.prototype.output_value_gpio = function (value) {
 		fs.writeFile( this.path + 'value', value, (err) => {
 			if (err) {
 				console.log('writing  gpio['+this.index+'] = ' + value + '] is failed');
-				console.log(err); 
+				console.log(err);
 				reject(err);
 				return;
 			}
@@ -99,37 +99,37 @@ sysfsGPIO.prototype.output_value_gpio = function (value) {
 
 sysfsGPIO.prototype.open_out_gpio = function () {
 	return new Promise( (resolve, reject) => {
-		
+
 		if( this.out_fd > -1 ) {
 			fs.closeSync(this.fd)
-		}	
-		
+		}
+
 		fs.open( this.path + 'value', 'w', (err, fd) => {
 			if (err) {
 				console.log('opening out gpio['+this.index+'] is failed');
-				console.log(err); 
+				console.log(err);
 				reject(err);
 				return;
 			}
 			this.out_fd = fd;
 			console.log('opening out gpio['+this.index+'] is successed!');
 			resolve();
-		});	
+		});
 	});
 };
 
 sysfsGPIO.prototype.out = function (value) {
-	
+
 	if( this.out_fd < 0 ) return;
-	
+
 	fs.write( this.out_fd, String(value), (err) => {
 		if (err) {
 			console.log('out gpio['+this.index+'] is failed');
-			console.log(err); 
+			console.log(err);
 			return;
 		}
 		this.disp_out(value);
-		
+
 	});
 };
 
@@ -170,8 +170,9 @@ sysfsGPIO.prototype.stop = function () {
 		this.timer_id = undefined;
 	}
 	
+	this.count 		= 0;
 	this.output_value_gpio( OFF );
-	
+
 	return self;
 }
 
@@ -180,11 +181,10 @@ sysfsGPIO.prototype.test = function () {
 	var self = this;
 
 	console.log( 'CALL sysfsGPIO.test()' );
-	
+
 	this.start_pulse(1000,10);
 
 	return self;
 }
 
 module.exports = sysfsGPIO;
-

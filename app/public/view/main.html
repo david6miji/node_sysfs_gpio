@@ -1,7 +1,10 @@
 <section>
 
-  <h1>HIPO Test </h1>
-  <h2>Testing </h2>
+  <h1>HIPO Test</h1>
+  <hr style="border: solid 1px red;">
+  <h2> 조작 </h2>
+  <hr style="border: solid 1px blue;">
+
 	<form class="form-horizontal">
 	  <div class="form-group">
 		<label for="forward_time"
@@ -58,8 +61,54 @@
 	  </div>
 	</form>
 
-    <hr style="border: solid 10px red;">
+  <hr style="border: solid 1px black;">
+  <h2> 상태 </h2>
+  <hr style="border: solid 1px blue;">
 
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label for="forward_rest_time"
+             class="col-sm-3
+             control-label">정방향 잔여 처리수</label>
+      <div class="col-sm-2">
+        <input type="text"
+               class="form-control"
+               ng-model="forward_rest_count"
+               id="forward_rest_count">
+      </div>
+      <div class="col-sm-7">
+          <uib-progressbar class="progress-striped active"
+                        ng-model=""
+                        max="forward_count"
+                        value="forward_rest_count"
+                        type="success">
+                        <i>{{forward_rest_count}}/{{forward_count}}</i>
+          </uib-progressbar>
+      </div>
+    </div>
+  </form>
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label for="backward_rest_time"
+             class="col-sm-3
+             control-label">역방향 잔여 처리수</label>
+      <div class="col-sm-2">
+        <input type="text"
+               class="form-control"
+               ng-model="backward_rest_count"
+               id="backward_rest_count">
+      </div>
+      <div class="col-sm-7">
+          <uib-progressbar class="progress-striped active"
+                        max="backward_count"
+                        value="backward_rest_count"
+                        >
+                        <i>{{backward_rest_count}}/{{backward_count}}</i>
+          </uib-progressbar>
+      </div>
+    </div>
+  </form>
+  <hr style="border: solid 1px red;">
 <!--
 
   <button type="button" ng-click="syncLength()">Test</button>
