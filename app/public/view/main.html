@@ -1,50 +1,50 @@
 <section>
 
-  <h1>HIPO Test</h1>
-  
+  <h1>HIPO Test </h1>
+  <h2>Testing </h2>
 	<form class="form-horizontal">
 	  <div class="form-group">
-		<label for="forward_time" 
-		       class="col-sm-3 
+		<label for="forward_time"
+		       class="col-sm-3
 			   control-label">정방향 시간주기/반복수</label>
 		<div class="col-sm-2">
-		  <input type="text" 
-		         class="form-control" 
-				 id="forward_time" 
+		  <input type="text"
+		         class="form-control"
+				 id="forward_time"
 				 ng-model="forward_time">
 		</div>
 		<div class="col-sm-2">
-		  <input type="text" 
-		         class="form-control" 
+		  <input type="text"
+		         class="form-control"
 				 ng-model="forward_count"
 				 id="forward_count">
 		</div>
 		<div class="col-sm-2">
-		  <button type="button" class="btn btn-primary" 
-				  ng-click="goForward()">정방향 펄스 발생</button> 
+		  <button type="button" class="btn btn-primary"
+				  ng-click="goForward()">정방향 펄스 발생</button>
 		</div>
 	  </div>
 	</form>
 	<form class="form-horizontal">
 	  <div class="form-group">
-		<label for="backward_time" 
-		       class="col-sm-3 
+		<label for="backward_time"
+		       class="col-sm-3
 			   control-label">역방향 시간주기/반복수</label>
 		<div class="col-sm-2">
-		  <input type="text" 
-		         class="form-control" 
-				 id="backward_time" 
+		  <input type="text"
+		         class="form-control"
+				 id="backward_time"
 				 ng-model="backward_time">
 		</div>
 		<div class="col-sm-2">
-		  <input type="text" 
-		         class="form-control" 
+		  <input type="text"
+		         class="form-control"
 				 ng-model="backward_count"
 				 id="backward_count">
 		</div>
 		<div class="col-sm-2">
-		  <button type="button" class="btn btn-primary" 
-				  ng-click="goBackward()">역방향 펄스 발생</button> 
+		  <button type="button" class="btn btn-primary"
+				  ng-click="goBackward()">역방향 펄스 발생</button>
 		</div>
 	  </div>
 	</form>
@@ -52,38 +52,39 @@
 	<form class="form-horizontal">
 	  <div class="form-group">
 		<div class="col-sm-offset-3 col-sm-6">
-		  <button type="button" class="btn btn-primary col-sm-12" 
+		  <button type="button" class="btn btn-primary col-sm-12"
 		          ng-click="goStop()">펄 스 중 지</button>
 		</div>
 	  </div>
 	</form>
-  
-<!--  
-  
+
+    <hr style="border: solid 10px red;">
+
+<!--
+
   <button type="button" ng-click="syncLength()">Test</button>
 
   <div ng-repeat="item in datas" class="tranlator_div">
-  
-	<div class="eng_div" >			
+
+	<div class="eng_div" >
     <ng-repeat ng-repeat="word in item.words">
 		<span  class="eng_n_span" >{{word.eng}}</span>
 		<span  class="eng_s_span" > </span>
 	</ng-repeat>
 	</div>
-	
-	<div class="kor_div" >			
+
+	<div class="kor_div" >
     <ng-repeat ng-repeat="word in item.words">
 		<span  class="kor_n_span" >{{word.kor}}</span>
 		<span  class="kor_s_span" > </span>
 	</ng-repeat>
 	</div>
-	
-	<div class="edit_div">			
+
+	<div class="edit_div">
 		<input class="edit_text" type="text" ng-model="item.edit">
 	</div>
-	
-  </div>			
+
+  </div>
 -->
 
 </section>
-
